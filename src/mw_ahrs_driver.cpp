@@ -26,9 +26,9 @@ MwAhrsDriver::MwAhrsDriver(const std::string& node) : Node(node) {
 
     srv_reset_ = this->create_service<std_srvs::srv::Trigger>(
         "imu/reset", std::bind(&MwAhrsDriver::reset, this, std::placeholders::_1, std::placeholders::_2));
-    pub_imu_ = this->create_publisher<sensor_msgs::msg::Imu>("imu/data", 1);
-    pub_rpy_ = this->create_publisher<geometry_msgs::msg::Vector3Stamped>("imu/rpy", 1);
-    pub_mag_ = this->create_publisher<sensor_msgs::msg::MagneticField>("imu/mag", 1);
+    pub_imu_ = this->create_publisher<sensor_msgs::msg::Imu>("/imu/data", 1);
+    pub_rpy_ = this->create_publisher<geometry_msgs::msg::Vector3Stamped>("/imu/rpy", 1);
+    pub_mag_ = this->create_publisher<sensor_msgs::msg::MagneticField>("/imu/mag", 1);
 }
 
 MwAhrsDriver::~MwAhrsDriver() {
